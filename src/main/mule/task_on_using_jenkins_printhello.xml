@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="37a80e70-0233-4cb8-b544-bf3a4768591a" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="task_on_using_jenkins_printhelloFlow" doc:id="cbff6900-ff53-4b51-b3fd-41abfb386514" >
+		<http:listener doc:name="Listener" doc:id="3b8725bb-de59-4200-aee1-ea709df01a6d" config-ref="HTTP_Listener_config" path="/hello"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e8427a4b-2dd2-4594-9e8a-6c120b35ab53" message="#[payload]"/>
+		<set-payload value='#["hi welcome to miracle software system"]' doc:name="Set Payload" doc:id="f6efd1ef-39cb-4641-a4ef-ac5c7f34285f" />
+	</flow>
+</mule>
